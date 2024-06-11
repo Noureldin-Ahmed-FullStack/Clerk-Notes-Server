@@ -9,6 +9,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    theme: String,
     coverImage: {
         type: String
     },

@@ -38,14 +38,12 @@ const getAllPosts = catchError(async (req, res) => {
 })
 
 const updatePost = catchError(async (req, res) => {
-    const data = {
-        title:req.body.title,
-        content:req.body.content
-    }
+    const data = req.body.note
     let post = await postModel.findByIdAndUpdate(req.body.postID, data)
     if (!post) {
         return res.status(404).json({ message: "Note doesnt exist" })
     }
+    console.log(data,post);
     res.json({ message: "Note updated" })
 })
 const deletePost = catchError(async (req, res) => {

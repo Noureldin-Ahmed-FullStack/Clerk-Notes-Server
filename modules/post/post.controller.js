@@ -46,6 +46,14 @@ const updatePost = catchError(async (req, res) => {
     console.log(data,post);
     res.json({ message: "Note updated" })
 })
+const completePost = catchError(async (req, res) => {
+    let post = await postModel.findByIdAndUpdate(req.params.id, {status:'completed'})
+    if (!post) {
+        return res.status(404).json({ message: "Note doesnt exist" })
+    }
+    res.json({ message: "Note updated" })
+})
+
 const deletePost = catchError(async (req, res) => {
     let post = await postModel.findByIdAndDelete(req.body.postID)
     if (!post) {
@@ -98,6 +106,7 @@ const updatePostImages = catchError(async (req, res) => {
 
 export {
     addPost,
+    completePost,
     getPostOfUser,
     getAllPosts,
     updatePost,

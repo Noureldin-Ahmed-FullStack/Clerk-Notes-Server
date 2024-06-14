@@ -8,6 +8,11 @@ const postSchema = new mongoose.Schema({
     content: {
         type: String,
     },
+    status:{
+        type: String,
+        enum: ['not completed', 'completed'],
+        default: 'not completed'
+    },
     theme: String,
     coverImage: {
         type: String
